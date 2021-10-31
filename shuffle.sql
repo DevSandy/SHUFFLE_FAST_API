@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2021 at 10:21 AM
+-- Generation Time: Oct 31, 2021 at 01:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -33,21 +33,21 @@ CREATE TABLE `shuffle_users` (
   `user_name` varchar(100) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `dob` varchar(50) NOT NULL,
+  `dob` varchar(50) DEFAULT NULL,
   `gender` varchar(50) NOT NULL,
   `bio` varchar(300) NOT NULL,
   `profile_pic` varchar(500) NOT NULL,
-  `facebook_url` varchar(200) NOT NULL,
-  `twitter_url` varchar(200) NOT NULL,
-  `instagram_url` varchar(200) NOT NULL,
-  `profession` varchar(100) NOT NULL,
-  `passion` varchar(100) NOT NULL,
+  `facebook_url` varchar(200) DEFAULT NULL,
+  `twitter_url` varchar(200) DEFAULT NULL,
+  `instagram_url` varchar(200) DEFAULT NULL,
+  `profession` varchar(100) DEFAULT NULL,
+  `passion` varchar(100) DEFAULT NULL,
   `latitude` varchar(50) NOT NULL,
   `longitude` varchar(50) NOT NULL,
-  `verified` int(10) NOT NULL,
+  `verified` int(10) NOT NULL DEFAULT 0,
   `device_token` varchar(500) NOT NULL,
-  `isban` int(10) NOT NULL,
-  `isdeactivated` int(10) NOT NULL
+  `isban` int(10) NOT NULL DEFAULT 0,
+  `isdeactivated` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -3,23 +3,24 @@ import uvicorn
 from fastapi import FastAPI, status, Response
 from Models.UserModel import CreateUser, UpdateUser, BanUser, DeactivateUser, LoginUser, CheckUserName
 
-app = FastAPI()
+app = FastAPI(docs_url="/documentation", redoc_url=None)
 
 
 @app.post("/")
 @app.get("/")
 async def index():
+    print("Lolappa")
     return "Na Na Nigga on Fire"
 
 
 @app.put("/create_user")
 async def create_user(userdata: CreateUser, response: Response):
+    unix_socket = '/cloudsql/{}'.format('shuffleindiaappapis:asia-south1:shuffledb')
     conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        passwd="",
+        user="adminshuffle",
+        passwd="adminshuffle@#123",
         db="shuffle",
+        unix_socket=unix_socket,
         autocommit=True
     )
     try:
@@ -61,12 +62,12 @@ async def create_user(userdata: CreateUser, response: Response):
 
 @app.post("/update_user")
 async def update_user(userdata: UpdateUser, response: Response):
+    unix_socket = '/cloudsql/{}'.format('shuffleindiaappapis:asia-south1:shuffledb')
     conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        passwd="",
+        user="adminshuffle",
+        passwd="adminshuffle@#123",
         db="shuffle",
+        unix_socket=unix_socket,
         autocommit=True
     )
     try:
@@ -108,12 +109,12 @@ async def update_user(userdata: UpdateUser, response: Response):
 
 @app.post("/ban_user")
 async def ban_user(userdata: BanUser, response: Response):
+    unix_socket = '/cloudsql/{}'.format('shuffleindiaappapis:asia-south1:shuffledb')
     conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        passwd="",
+        user="adminshuffle",
+        passwd="adminshuffle@#123",
         db="shuffle",
+        unix_socket=unix_socket,
         autocommit=True
     )
     try:
@@ -133,12 +134,12 @@ async def ban_user(userdata: BanUser, response: Response):
 
 @app.post("/deactivate_user")
 async def deactivate_user(userdata: DeactivateUser, response: Response):
+    unix_socket = '/cloudsql/{}'.format('shuffleindiaappapis:asia-south1:shuffledb')
     conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        passwd="",
+        user="adminshuffle",
+        passwd="adminshuffle@#123",
         db="shuffle",
+        unix_socket=unix_socket,
         autocommit=True
     )
     try:
@@ -158,12 +159,12 @@ async def deactivate_user(userdata: DeactivateUser, response: Response):
 
 @app.post("/login_user_or_get_user_details")
 async def login_user_or_get_user_details(userdata: LoginUser, response: Response):
+    unix_socket = '/cloudsql/{}'.format('shuffleindiaappapis:asia-south1:shuffledb')
     conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        passwd="",
+        user="adminshuffle",
+        passwd="adminshuffle@#123",
         db="shuffle",
+        unix_socket=unix_socket,
         autocommit=True
     )
     try:
@@ -212,12 +213,12 @@ async def login_user_or_get_user_details(userdata: LoginUser, response: Response
 
 @app.post("/check_user_name_is_available")
 async def check_user_name_is_available(userdata: CheckUserName, response: Response):
+    unix_socket = '/cloudsql/{}'.format('shuffleindiaappapis:asia-south1:shuffledb')
     conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        passwd="",
+        user="adminshuffle",
+        passwd="adminshuffle@#123",
         db="shuffle",
+        unix_socket=unix_socket,
         autocommit=True
     )
     try:
@@ -241,6 +242,3 @@ async def check_user_name_is_available(userdata: CheckUserName, response: Respon
             "message": str(e)
         }
 
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
